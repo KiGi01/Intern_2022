@@ -5,3 +5,25 @@
 3. 모든 노트북에서 오류 없이 실행되는 코드가 있는지 (만일 있다면 힌트 부탁드립니다...)
 
 문의 드립니다.
+
+=============================================================================
+
+과제 1. 과제 파일 내부에 함께 제공되는 'DATA\\Q1. finding_files'폴더 내에 있는 3개의 파일명을 프린트해주는 프로그램을 작성하시오.
+- 출력되어야 하는 파일명(순서무관) : Dock_form.docx, HWP_form.hwp, TXT_form.txt
+
+=============================================================================
+
+
+import os
+
+file_path = os.chdir('C:\ICL 2022\week3\DATA\Q1. finding_files')
+
+all_name = os.listdir(file_path)
+
+file_name = []
+
+for i in all_name:
+        if '.' in i:
+                file_name.append(i)
+
+print(', '.join(file_name))
