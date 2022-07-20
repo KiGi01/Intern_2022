@@ -134,7 +134,7 @@ for r in range(row):                    # 행만큼 반복
             except IndexError:
                 pass
             try:                # 예외 처리
-                for updown in range(r - 1, r + 2, 2):                               # 해당 값의 위 아래 값에서 지뢰 찾기 ( r - 1과 r + 2인 경우만 반복하기 위해 2씩 증가시킴)
+                for updown in range(r - 1, r + 2, 2):                               # 해당 값의 위 아래 값에서 지뢰 찾기 ( r - 1과 r + 1인 경우만 반복하기 위해 2씩 증가시킴)
                     if lst_add[updown][c] == '*' and updown >= 0 and c >= 0:        # 인덱스 값이 0 이상인 경우와 해당 위치가 '*'인 경우
                             cnt += 1                                                # cnt에 1씩 더함
             except IndexError:
