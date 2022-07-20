@@ -26,7 +26,7 @@ Not jolly
 """
 
 def do(xs):     # jolly 여부를 판단하는 함수
-    return {abs(x[0] - x[1]) for x in zip(xs, xs[1:])} == set(range(1, len(xs))) # 인접한 두수의 차
+    return (abs(x[0] - x[1]) for x in zip(xs, xs[1:])) == set(range(1, len(xs))) # 인접한 두수의 차
                 # jolly jump 인 값은  1, 2, 3, ..., n - 1 이기 때문에 set과 비교
                 # abs(x[0] - x[1]) -> (x의 첫번째 수)와 (x의 두번째 수)의 차
                 # 1부터 xs-1 까지의 집합
@@ -57,7 +57,7 @@ for d in data:
 """
 
 def do(xs):
-    return {abs(x[0] - x[1]) for x in zip(xs, xs[1:])} == set(range(1, len(xs)))
+    return (abs(x[0] - x[1]) for x in zip(xs, xs[1:])) == set(range(1, len(xs)))
 
 data = []
 
