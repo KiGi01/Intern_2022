@@ -17,7 +17,7 @@ LIFE IS TOO SHORT 라는 문자열을 포함하고 있는 파일들을
 
 import os
 
-dir_root = "C:\세미나\week3\python_seminar\python_seminar\DATA\Q1. finding_files" #디렉토리의 경로설정
+dir_root = "C:\세미나\week3\python_seminar\python_seminar\DATA\Q1. finding_files" # 디렉토리의 경로설정
 save_lst = [] # 파일만 저장할 리스트 생성
 item_list = os.listdir(dir_root) # 지정된 경로에 존재하는 파일과 폴더의 이름을 리스트에 저장
 

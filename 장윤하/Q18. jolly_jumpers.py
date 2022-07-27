@@ -65,7 +65,7 @@ for i in range(len(jumper_lst)):
     for j in range(len(deleteone)-1):
         minus_lst.append(abs(int(deleteone[j])-int(deleteone[j + 1])))
 
-    if jumper_lst[i][0] == '0':                                       # 입려한 수열의 첫 글자가 0인 경우
+    if jumper_lst[i][0] == '0':                                       # 입력한 수열의 첫 글자가 0인 경우
         print('0')                                                    # 0을 프린트
     elif list(range(1, int(jumper_lst[i][0]))) == sorted(minus_lst):
         print('Jolly')

@@ -35,7 +35,7 @@ n = input("왕복할 횟수를 입력하세요: ").split(',')
 for i in range(len(n)):
     walk = int(n[i])   # 왕복하는 횟수
     light = 0
-    for j in range(1, walk+1, 2):
+    for j in range(1, walk+1, 2):  # 처음 위치로 돌아올 때는 스위치를 건드리지 않으니까 홀수 번째 움직일 때만 스위치에 변화가 생김
         if walk % j == 0:
             light += 1
 

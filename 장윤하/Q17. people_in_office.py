@@ -23,9 +23,9 @@ def cnt_people(check_time):
     with open(file_path) as f:
         lines = f.read().splitlines() # 텍스트 파일을 한 줄씩 읽어 들임
 
-    split_lst = []
-    for i in range(0, len(lines)):
-        lines_split = lines[i].split()  # 한 줄을 다시 공백에 따라 두 가지 요소로 분리
+    split_lst = []                  # 출퇴근 시간을 각각 저장할 리스트 생성
+    for i in range(0, len(lines)):    # 한 줄씩 반복하면서
+        lines_split = lines[i].split()  # 각 줄을 다시 공백에 따라 두 가지 요소로 분리
         split_lst.append(lines_split)   # 리스트에 리스트를 저장
 
         start_time = int(split_lst[i][0].replace(":",""))   # ':'를 삭제하여 하나의 숫자로 저장 ( 11:09:08 -> 110908 )
