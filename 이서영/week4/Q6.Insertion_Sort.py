@@ -66,3 +66,47 @@ def insertion_sort(sort):                                   # list.sort : 오름
    
 num = input('input = ').split(',')                          # input 값을 ','구분자로 나누기
 print('출력 : ', insertion_sort(num))                       # a를 insertion_sort 함수에 대입 후 출력
+'''
+input = 5,2,4,6,1,3
+sort = ['5', '2', '4', '6', '1', '3']
+x = 1
+a = 0
+sort[a] =  5 > sort[x] =  2
+sort[a],sort[a+1:x+1] =  2 ['5']
+sort[x],sort[a:x] =  5 ['2']
+sort = ['2', '5', '4', '6', '1', '3']
+
+x = 2
+a = 0
+a = 1
+sort[a] =  5 > sort[x] =  4
+sort[a],sort[a+1:x+1] =  4 ['5']
+sort[x],sort[a:x] =  5 ['4']
+sort = ['2', '4', '5', '6', '1', '3']
+
+x = 3
+a = 0
+a = 1
+a = 2
+a = 3
+a = 4
+a = 5
+
+x = 4
+a = 0
+sort[a] =  2 > sort[x] =  1
+sort[a],sort[a+1:x+1] =  1 ['2', '4', '5', '6']
+sort[x],sort[a:x] =  6 ['1', '2', '4', '5']
+sort = ['1', '2', '4', '5', '6', '3']
+
+x = 5
+a = 0
+a = 1
+a = 2
+sort[a] =  4 > sort[x] =  3
+sort[a],sort[a+1:x+1] =  3 ['4', '5', '6']
+sort[x],sort[a:x] =  6 ['3', '4', '5']
+sort = ['1', '2', '3', '4', '5', '6']
+
+출력 :  1,2,3,4,5,6
+'''
