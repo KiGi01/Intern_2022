@@ -16,7 +16,6 @@ LIFE IS TOO SHORT 라는 문자열을 포함하고 있는 파일들을
 import os
 
 file_path = os.chdir('C:\ICL 2022\week3\DATA\Q1. finding_files')
-#file_path = os.chdir('C:/Users/선아/Desktop/ICL/22summer_python/week3/DATA/Q1. finding_files')
 all_name = os.listdir(file_path)
 file_name = []
 
@@ -41,7 +40,6 @@ print(', '.join(file_name))
 import itertools
 
 dir_path = 'C:\ICL 2022\week3\DATA\Q1. finding_files'
-#dir_path = 'C:/Users/선아/Desktop/ICL/22summer_python/week3/DATA/Q1. finding_files'
 file_name2 = []
 
 for (root, directories, files) in os.walk(dir_path):
@@ -85,7 +83,6 @@ print("Sol #3: ", ', '.join(file_name3))
 
 file_name4=[]
 dir_path = 'C:\ICL 2022\week3\DATA\Q1. finding_files'
-#dir_path = 'C:/Users/선아/Desktop/ICL/22summer_python/week3/DATA/Q1. finding_files'
 
 for (root, directories, files) in os.walk(dir_path):
     for file in files:
