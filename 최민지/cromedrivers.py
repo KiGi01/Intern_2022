@@ -1,12 +1,9 @@
-from ast import keyword
-from urllib import response
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
-import urllib.request
-import urllib.parse
-from selenium.webdriver.chrome.options import Options
+import requests
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+import codecs
+
 
 #chromedriver 경로 위치
 browser = webdriver.Chrome("/Users/choiminji/Desktop/chromedriver")
@@ -31,26 +28,52 @@ browser.find_element(By.XPATH, '//*[@id="main_snb"]/div[1]/ul[3]/li[1]/a').click
 #유아(0~7) 베스트셀러 클릭
 browser.find_element(By.XPATH, '//*[@id="container"]/div[2]/div/div/div[3]/ul/li[2]/a/span').click()
 
-#각 페이지 안에서 반복
-#1페이지 당  20개
-#각각의 책을 눌러 원하는 정보인 저자, 책 이름, ISBN-13, 키워드, 출판사 서평을 찾는다.
-#json파일에 저장
+url = ('http://www.kyobobook.co.kr/product/detailViewKor.laf?mallGb=KOR&ejkGb=KOR&linkClass=41&barcode=002')
 
-pageNum = 1
-lastpage = 8
-while pageNum < lastpage + 1:
-    href = "javascript:_go_targetPage('{pageNum}')"
+bsObject = BeautifulSoup(url, "html.parser")
 
-    html = urllib.request.urlopen(browser).read()
-    soup = BeautifulSoup(html, 'html.parser')
+book_rank = 0
+isbn_list = []
 
-    title = soup.find_all(class_ = 'title')
+for isbn in bsObject.find_all('input', {'name':'barcode'}):
+    isbn_list.append(isbn.get('value'))
 
-    for i in title:
-        print(i.attrs['title'])
-        print(i.attrs['author'])
-        print()
-        pageNum += 1
+for isbn in isbn_list:
+    url1 = ('http://www.kyobobook.co.kr/product/detailViewKor.laf?mallGb=KOR&ejkGb=KOR&linkClass=41&barcode=' + isbn)
+    
+    #빈 리스트 생성
+    title_list = []
+    author_list = []
+    writing_basic_list = []
+    writing_basic_list2 = []
 
-#왜 브라우저가 마지막에 꺼지는지
-#하나하나 책 페이지에 들어가서 데이터를 추출해야 하는 지
+    source = browser.page_source
+
+    parsed_source = BeautifulSoup(source, "html.parser")
+    #클래스가 'title' 찾기
+    ul_list = parsed_source.find_all("ul", class_ = "title")
+    ul_list = ul_list[0]
+
+    div_title_list = ul_list.find_all("div", class_ = "title")
+    for item in div_title_list:
+        title_list.append(item.text.strip())
+    #div class인 'author' 찾기 = 저자 데이터 
+    div_author_list = ul_list.find_all("div", class_ = "author")
+    for item in div_author_list:
+        author_list.append(item.text.strip().replace("\n","").replace("\t",""))
+    #div class인 'title_datial_basic2' 찾기 = 책 소개 데이터
+    div_writing_list = ul_list.find_all("div", class_ = "title_detail_basic2")
+    for item in div_writing_list:
+        writing_basic_list.append(item.text)
+    #div class인 'box_detail_article' 찾기 = 두번째 책 소개 데이터
+    div_writing_list2 = ul_list.find_all("div", class_ = "box_detail_article")
+    for item in div_writing_list2:
+        writing_basic_list2.append(item.text)
+
+    for i in range(len(title_list)):
+        book_rank += 1
+        f.write("%s등" % book_rank + "\n")
+        f.write(title_list[i] + "\n")
+        f.write(author_list[i] + "\n")
+        f.write(writing_basic_list[i] + "\n")
+        f.write(writing_basic_list2[i] + "\n")
