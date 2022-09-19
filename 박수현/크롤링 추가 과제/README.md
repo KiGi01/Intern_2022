@@ -4,3 +4,4 @@
 - book_info_code_박수현_초안.py : 최종 방식(바코드만 바꾸며 페이지를 이동)이 아닌 각 도서 페이지를 직접 클릭해 진입하며 이동하는 방식으로 작성된 코드입니다.
 - book_info_full_sample_박수현.json : 코드를 사용할 경우 최종적으로 추출될 데이터에 대한 샘플입니다.
 - book_info_sample_박수현.json : 추출될 데이터의 샘플로 "유아(0~7세) > 유아놀이" 베스트 셀러에 해당합니다.
+- book_info_박수현.json (용량 문제로 링크 공유) : https://drive.google.com/file/d/1o-ilvpZRrgdbQ49JBPu1dgS_z9hozzC0/view?usp=sharing
